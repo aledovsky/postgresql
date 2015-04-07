@@ -81,7 +81,7 @@ if node['init_package'] == 'systemd'
 
 else !platform_family?("suse")
 
-  execute "service #{svc_name} initdb" do
+  execute "/sbin/service #{svc_name} initdb #{initdb_locale}" do
     not_if { ::FileTest.exist?(File.join(dir, "PG_VERSION")) }
   end
 
